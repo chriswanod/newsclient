@@ -10,6 +10,6 @@ import RealmSwift
 
 class Article: Object {
 
-    
+
 
 }

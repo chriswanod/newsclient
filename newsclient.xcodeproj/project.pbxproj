@@ -88,6 +88,10 @@
 		C53D92932019622400FFFBED /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		C53D92952019624500FFFBED /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C53D929A2019663C00FFFBED /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		C53D929C2019671300FFFBED /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C53D929D2019675600FFFBED /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		C53D929E2019679A00FFFBED /* CREDITS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CREDITS.md; sourceTree = "<group>"; };
+		C53D929F2019682C00FFFBED /* checkout.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkout.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +126,15 @@
 		C53D923B201918C300FFFBED = {
 			isa = PBXGroup;
 			children = (
-				C53D92752019194E00FFFBED /* Cartfile */,
 				C53D9281201953D400FFFBED /* Alamofire.framework */,
 				C53D9280201953D400FFFBED /* Amplitude.framework */,
 				C53D9282201953D400FFFBED /* Realm.framework */,
 				C53D927F201953D400FFFBED /* RealmSwift.framework */,
+				C53D929E2019679A00FFFBED /* CREDITS.md */,
+				C53D929D2019675600FFFBED /* LICENSE.md */,
+				C53D929C2019671300FFFBED /* README.md */,
+				C53D92752019194E00FFFBED /* Cartfile */,
+				C53D929F2019682C00FFFBED /* checkout.sh */,
 				C53D9290201961DC00FFFBED /* Configs */,
 				C53D928C201956C900FFFBED /* Lib */,
 				C53D9246201918C300FFFBED /* newsclient */,
