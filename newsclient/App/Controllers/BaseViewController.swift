@@ -13,7 +13,7 @@ class BaseViewController: UIViewController {
     // MARK: - API
 
     private func setupView() {
-        self.view.backgroundColor = Color.white
+        self.view.backgroundColor = Color.creamWhite
     }
 
     private func animateView(didAppear: Bool) {

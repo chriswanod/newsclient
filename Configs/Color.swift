@@ -19,4 +19,5 @@ import Foundation
 
 extension Color {
     static var miamiBlue: Color { return #colorLiteral(red: 0, green: 0.5254901961, blue: 0.9764705882, alpha: 1) }
+    static var creamWhite: Color { return #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1) }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Amplitude
 
 protocol PersistentContainerDelegate: NSObjectProtocol {
     func persistentContainer(_ manager: RealmManager, didErr error: Error)
@@ -20,13 +21,14 @@ extension PersistentContainerDelegate {
     func didPurgeDatabase(_ manager: RealmManager) {}
 }
 
-var realm: Realm!
+var defaultRealm: Realm!
+var testRealm: Realm!
 
 func setupRealm() {
     let dir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
     let fileUrl = URL(fileURLWithPath: dir, isDirectory: true).appendingPathComponent("default.realm")
-    let config = Realm.Configuration(fileURL: fileUrl, schemaVersion: 0, migrationBlock: nil, objectTypes: [])
-    realm = try! Realm(configuration: config)
+    let config = Realm.Configuration(fileURL: fileUrl, schemaVersion: 0, migrationBlock: nil, objectTypes: [Article.self])
+    defaultRealm = try! Realm(configuration: config)
 }
 
 class RealmManager: NSObject {
@@ -35,11 +37,12 @@ class RealmManager: NSObject {
 
     func purgeDatabase() {
         do {
-            try realm.write {
-                realm.deleteAll()
+            try defaultRealm.write {
+                defaultRealm.deleteAll()
             }
             delegate?.didPurgeDatabase(self)
         } catch let err {
+            Amplitude.instance().logEvent(err.localizedDescription)
             delegate?.persistentContainer(self, didErr: err)
         }
     }

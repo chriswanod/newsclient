@@ -11,7 +11,7 @@ import UIKit
 class BaseCollectionViewCell: UICollectionViewCell {
 
     private func setupCell() {
-        self.backgroundColor = Color.white
+        self.backgroundColor = Color.clear
         self.contentView.backgroundColor = Color.clear
     }
 

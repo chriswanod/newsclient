@@ -28,8 +28,15 @@ class PastArticleCell: BaseCollectionViewCell {
         
     }
 
+    private func setupCell() {
+        self.backgroundColor = Color.clear
+        self.containerView.backgroundColor = Color.white
+        self.articleImageView.clipsToBounds = true
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupCell()
     }
 
 }

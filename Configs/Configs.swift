@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Amplitude
 
 class Configs: NSObject {
 
@@ -42,25 +43,49 @@ class Configs: NSObject {
     // device_token
 
     func hasDeviceToken() -> Bool {
-        return false
+        return UserDefaults.standard.bool(forKey: kDeviceToken)
     }
 
     func updateDeviceToken(token: String) {
-
+        do {
+            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: "newsclient_device_token", accessGroup: KeychainConfiguration.accessGroup)
+            try passwordItem.savePassword(token)
+            UserDefaults.standard.set(true, forKey: kDeviceToken)
+        } catch let err {
+            fatalError("Error updating keychain - \(err)")
+        }
     }
 
     // session_token
 
     func hasSessionToken() -> Bool {
-        return false
-    }
-
-    func hasSessionTokenExpired() -> Bool {
-        return false
+        return UserDefaults.standard.bool(forKey: kSessionToken)
     }
 
     func updateSessionToken(token: String) {
+        do {
+            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: "newsclient_session_token", accessGroup: KeychainConfiguration.accessGroup)
+            try passwordItem.savePassword(token)
+            UserDefaults.standard.set(true, forKey: kSessionToken)
+        } catch let err {
+            fatalError("Error updating keychain - \(err)")
+        }
+    }
 
+    // api_key
+
+    func hasApiKey() -> Bool {
+        return UserDefaults.standard.bool(forKey: kApiKey)
+    }
+
+    func updateApiKey(key: String) {
+        do {
+            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: "newsclient_api_key", accessGroup: KeychainConfiguration.accessGroup)
+            try passwordItem.savePassword(key)
+            UserDefaults.standard.set(true, forKey: kApiKey)
+        } catch let err {
+            fatalError("Error updating keychain - \(err)")
+        }
     }
 
     // onboarding

@@ -23,9 +23,16 @@ class HeadlineArticlesViewController: BaseViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUICollectionView()
         self.setupUICollectionViewDelegate()
         self.setupUICollectionViewDataSource()
         self.setupUICollectionViewDelegateFlowLayout()
+    }
+
+    // MAKR: - UICollectionView
+
+    private func setupUICollectionView() {
+        self.collectionView.backgroundColor = Color.creamWhite
     }
 
     // MARK: - UICollectionViewDelegate
@@ -52,7 +59,7 @@ class HeadlineArticlesViewController: BaseViewController, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.articles?.count ?? 0
+        return self.articles?.count ?? 3
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

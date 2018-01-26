@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var realmManager: RealmManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setupRealm()
         self.setupAmplitude()
+        if Configs.shared.isOnboardingCompleted() {
+            print("go straight to the app")
+        } else {
+            print("show onboarding")
+        }
         return true
     }
 
@@ -67,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        // TODO: persist token into Keychain
+        Configs.shared.updateDeviceToken(token: token)
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -80,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Amplitude.instance().trackingSessionEvents = true
         Amplitude.instance().minTimeBetweenSessionsMillis = 5000
         Amplitude.instance().initializeApiKey("56951280126c1b20a76164070e7e23dd")
+        Amplitude.instance().logEvent("App Start")
     }
 
 }
