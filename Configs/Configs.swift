@@ -99,4 +99,11 @@ class Configs: NSObject {
         UserDefaults.standard.set(isCompleted, forKey: kOnboardingCompletion)
     }
 
+    // amplitude
+
+    func amplitudeApiKey() -> String {
+        let key = Bundle.main.object(forInfoDictionaryKey: "AMPLITUDE_API_KEY") as! String
+        return key
+    }
+
 }
